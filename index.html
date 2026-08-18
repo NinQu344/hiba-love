@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>For Hiba ❤️</title>
+
+<style>
+
+/* =====================================================
+   GENERAL
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    font-family: Arial, sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #4b164f,
+            #17051d 60%,
+            #080109
+        );
+}
+
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+.heart {
+
+    position: fixed;
+
+    bottom: -30px;
+
+    color: #ff72b6;
+
+    font-size: 20px;
+
+    animation:
+        float 6s linear forwards;
+
+    pointer-events: none;
+
+    z-index: 200;
+}
+
+
+@keyframes float {
+
+    0% {
+
+        transform:
+            translateY(0)
+            scale(.5);
+
+        opacity: 0;
+    }
+
+    20% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            translateY(-110vh)
+            scale(1.5);
+
+        opacity: 0;
+    }
+}
+
+
+/* =====================================================
+   MAIN BOX
+===================================================== */
+
+.box {
+
+    width: min(90%, 600px);
+
+    padding: 50px 30px;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 0 50px
+        rgba(255,80,170,.15);
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 10;
+}
+
+
+h1 {
+
+    font-size:
+        clamp(35px, 7vw, 60px);
+
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 15px #ff65ad,
+        0 0 35px
+        rgba(255,80,170,.5);
+}
+
+
+#question {
+
+    font-size: 22px;
+
+    color: #e9cde0;
+
+    margin-bottom: 40px;
+
+    min-height: 30px;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+
+button {
+
+    border: none;
+
+    border-radius: 50px;
+
+    padding: 15px 35px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+#yes {
+
+    background: #ff4f9d;
+
+    color: white;
+
+    box-shadow:
+        0 0 20px
+        rgba(255,79,157,.5);
+}
+
+
+#yes:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 35px
+        rgba(255,79,157,.8);
+}
+
+
+#no {
+
+    background:
+        rgba(255,255,255,.12);
+
+    color: white;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+}
+
+
+#no:hover {
+
+    background:
+        rgba(255,255,255,.2);
+}
+
+
+/* =====================================================
+   GAME SCREEN
+===================================================== */
+
+#gameScreen {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #321537,
+            #0b0610
+        );
+
+    z-index: 50;
+}
+
+
+.gameTitle {
+
+    position: absolute;
+
+    top: 12px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 27px;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 0 15px #ff65ad;
+
+    z-index: 100;
+
+    white-space: nowrap;
+}
+
+
+#gameMessage {
+
+    position: absolute;
+
+    top: 50px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    color: #ffd9ed;
+
+    font-size: 15px;
+
+    z-index: 100;
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   GAME MAP
+===================================================== */
+
+#game {
+
+    position: absolute;
+
+    width: 900px;
+
+    height: 600px;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        linear-gradient(
+            rgba(70,30,70,.3),
+            rgba(20,10,30,.3)
+        ),
+        #182d22;
+
+    border:
+        4px solid #ff70b7;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 40px
+        rgba(255,80,170,.4);
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   TREES
+===================================================== */
+
+.tree {
+
+    position: absolute;
+
+    font-size: 55px;
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   FLOWERS
+===================================================== */
+
+.flower {
+
+    position: absolute;
+
+    font-size: 25px;
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   OBSTACLES
+===================================================== */
+
+.obstacle {
+
+    position: absolute;
+
+    background:
+        linear-gradient(
+            135deg,
+            #49294f,
+            #24152b
+        );
+
+    border:
+        2px solid #7d487e;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 10px
+        rgba(0,0,0,.5);
+}
+
+
+/* =====================================================
+   COLLECTIBLE HEARTS
+===================================================== */
+
+.collectHeart {
+
+    position: absolute;
+
+    font-size: 27px;
+
+    animation:
+        heartFloat
+        1s
+        infinite
+        alternate;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            #ff4f9d
+        );
+
+    pointer-events: none;
+}
+
+
+@keyframes heartFloat {
+
+    from {
+
+        transform:
+            translateY(0);
+    }
+
+    to {
+
+        transform:
+            translateY(-7px);
+    }
+}
+
+
+/* =====================================================
+   PLAYER
+===================================================== */
+
+#player {
+
+    position: absolute;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 35px;
+
+    z-index: 30;
+
+    user-select: none;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            #6ddcff
+        );
+}
+
+
+/* =====================================================
+   YASSIR
+===================================================== */
+
+#yassir {
+
+    position: absolute;
+
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 40px;
+
+    z-index: 25;
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            #ff4f9d
+        );
+
+    animation:
+        yassirGlow
+        1s
+        infinite
+        alternate;
+}
+
+
+@keyframes yassirGlow {
+
+    from {
+
+        transform:
+            scale(1);
+    }
+
+    to {
+
+        transform:
+            scale(1.15);
+    }
+}
+
+
+/* =====================================================
+   SPEECH BUBBLE
+===================================================== */
+
+#speech {
+
+    position: absolute;
+
+    background: white;
+
+    color: #42133e;
+
+    padding:
+        8px 13px;
+
+    border-radius: 15px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+
+    transform:
+        translate(-50%, -100%);
+
+    z-index: 40;
+
+    display: none;
+}
+
+
+#speech::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -7px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    border-left:
+        7px solid transparent;
+
+    border-right:
+        7px solid transparent;
+
+    border-top:
+        8px solid white;
+}
+
+
+/* =====================================================
+   GAME INSTRUCTIONS
+===================================================== */
+
+.controls {
+
+    position: absolute;
+
+    bottom: 15px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    text-align: center;
+
+    z-index: 100;
+
+    color: #eacfe1;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   MOBILE JOYSTICK
+===================================================== */
+
+#joystick {
+
+    position: fixed;
+
+    left: 25px;
+
+    bottom: 25px;
+
+    width: 125px;
+    height: 125px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.12);
+
+    border:
+        2px solid
+        rgba(255,255,255,.3);
+
+    box-shadow:
+        0 0 25px
+        rgba(255,80,170,.25);
+
+    z-index: 150;
+
+    touch-action: none;
+
+    display: none;
+}
+
+
+#joystickKnob {
+
+    position: absolute;
+
+    width: 58px;
+    height: 58px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #ff4f9d;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+
+    box-shadow:
+        0 0 20px
+        rgba(255,79,157,.7);
+
+    user-select: none;
+
+    touch-action: none;
+}
+
+
+/* =====================================================
+   FOUND SCREEN
+===================================================== */
+
+#foundScreen {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #651a58,
+            #160718
+        );
+
+    z-index: 300;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.foundContent {
+
+    animation:
+        foundAppear
+        1s
+        ease;
+}
+
+
+@keyframes foundAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.5);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+.foundHeart {
+
+    font-size: 100px;
+
+    animation:
+        heartbeat
+        1s
+        infinite;
+}
+
+
+@keyframes heartbeat {
+
+    0%, 100% {
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+
+        transform:
+            scale(1.2);
+    }
+}
+
+
+.foundContent h1 {
+
+    font-size:
+        clamp(
+            40px,
+            8vw,
+            75px
+        );
+}
+
+
+.continueBtn {
+
+    margin-top: 20px;
+
+    background: #ff4f9d;
+
+    color: white;
+
+    box-shadow:
+        0 0 30px
+        rgba(255,79,157,.7);
+}
+
+
+/* =====================================================
+   FINAL SCREEN
+===================================================== */
+
+#final {
+
+    display: none;
+}
+
+
+.big-heart {
+
+    font-size: 90px;
+
+    animation:
+        heartbeat
+        1s
+        infinite;
+}
+
+
+#final p {
+
+    font-size: 21px;
+
+    line-height: 1.7;
+
+    color: #eacfe1;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    #game {
+
+        width: 95vw;
+
+        height: 72vh;
+    }
+
+    #joystick {
+
+        display: block;
+    }
+
+    .controls {
+
+        bottom: 160px;
+    }
+
+    .gameTitle {
+
+        top: 7px;
+
+        font-size: 21px;
+    }
+
+    #gameMessage {
+
+        top: 40px;
+
+        font-size: 13px;
+    }
+}
+
+
+/* Small phones */
+
+@media (max-height: 600px) {
+
+    #game {
+
+        height: 70vh;
+    }
+
+    #joystick {
+
+        width: 105px;
+        height: 105px;
+
+        left: 15px;
+        bottom: 15px;
+    }
+
+    #joystickKnob {
+
+        width: 50px;
+        height: 50px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOVE QUESTION
+===================================================== -->
+
+<div class="box" id="main">
+
+    <h1>
+        Hiba ❤️
+    </h1>
+
+    <div id="question">
+        Do you love me? 🥺
+    </div>
+
+    <div class="buttons">
+
+        <button
+            id="yes"
+            onclick="yesClicked()">
+
+            YES ❤️
+
+        </button>
+
+        <button
+            id="no"
+            onclick="noClicked()">
+
+            NO 😭
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     GAME
+===================================================== -->
+
+<div id="gameScreen">
+
+    <div class="gameTitle">
+        Find Yassir ❤️
+    </div>
+
+    <div id="gameMessage">
+        Find me... I'm hiding somewhere 👀
+    </div>
+
+
+    <div id="game">
+
+        <!-- PLAYER -->
+
+        <div id="player">
+            🧍‍♀️
+        </div>
+
+
+        <!-- YASSIR -->
+
+        <div id="yassir">
+            🧍‍♂️
+        </div>
+
+
+        <!-- SPEECH -->
+
+        <div id="speech">
+            👀
+        </div>
+
+
+        <!-- TREES -->
+
+        <div
+            class="tree"
+            style="
+                left:70px;
+                top:70px;
+            "
+        >
+            🌳
+        </div>
+
+        <div
+            class="tree"
+            style="
+                left:760px;
+                top:80px;
+            "
+        >
+            🌳
+        </div>
+
+        <div
+            class="tree"
+            style="
+                left:80px;
+                top:450px;
+            "
+        >
+            🌳
+        </div>
+
+        <div
+            class="tree"
+            style="
+                left:760px;
+                top:440px;
+            "
+        >
+            🌳
+        </div>
+
+        <div
+            class="tree"
+            style="
+                left:400px;
+                top:100px;
+            "
+        >
+            🌳
+        </div>
+
+
+        <!-- OBSTACLES -->
+
+        <div
+            class="obstacle"
+            style="
+                left:200px;
+                top:90px;
+                width:130px;
+                height:40px;
+            "
+        ></div>
+
+        <div
+            class="obstacle"
+            style="
+                left:500px;
+                top:160px;
+                width:40px;
+                height:150px;
+            "
+        ></div>
+
+        <div
+            class="obstacle"
+            style="
+                left:280px;
+                top:350px;
+                width:160px;
+                height:40px;
+            "
+        ></div>
+
+        <div
+            class="obstacle"
+            style="
+                left:620px;
+                top:350px;
+                width:120px;
+                height:40px;
+            "
+        ></div>
+
+        <div
+            class="obstacle"
+            style="
+                left:100px;
+                top:270px;
+                width:40px;
+                height:130px;
+            "
+        ></div>
+
+
+        <!-- FLOWERS -->
+
+        <div
+            class="flower"
+            style="
+                left:160px;
+                top:180px;
+            "
+        >
+            🌸
+        </div>
+
+        <div
+            class="flower"
+            style="
+                left:450px;
+                top:440px;
+            "
+        >
+            🌷
+        </div>
+
+        <div
+            class="flower"
+            style="
+                left:570px;
+                top:90px;
+            "
+        >
+            🌸
+        </div>
+
+        <div
+            class="flower"
+            style="
+                left:720px;
+                top:250px;
+            "
+        >
+            🌷
+        </div>
+
+        <div
+            class="flower"
+            style="
+                left:250px;
+                top:500px;
+            "
+        >
+            🌸
+        </div>
+
+
+        <!-- HEARTS -->
+
+        <div
+            class="collectHeart"
+            style="
+                left:170px;
+                top:130px;
+            "
+        >
+            ❤️
+        </div>
+
+        <div
+            class="collectHeart"
+            style="
+                left:370px;
+                top:180px;
+            "
+        >
+            💕
+        </div>
+
+        <div
+            class="collectHeart"
+            style="
+                left:650px;
+                top:120px;
+            "
+        >
+            💗
+        </div>
+
+        <div
+            class="collectHeart"
+            style="
+                left:180px;
+                top:420px;
+            "
+        >
+            💖
+        </div>
+
+        <div
+            class="collectHeart"
+            style="
+                left:500px;
+                top:470px;
+            "
+        >
+            💘
+        </div>
+
+        <div
+            class="collectHeart"
+            style="
+                left:700px;
+                top:300px;
+            "
+        >
+            ❤️
+        </div>
+
+    </div>
+
+
+    <!-- JOYSTICK -->
+
+    <div id="joystick">
+
+        <div id="joystickKnob">
+            ❤️
+        </div>
+
+    </div>
+
+
+    <div class="controls">
+
+        🕹️ Move with the joystick
+
+        <br>
+
+        💻 PC: WASD / Arrow Keys
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FOUND YASSIR
+===================================================== -->
+
+<div id="foundScreen">
+
+    <div class="foundContent">
+
+        <div class="foundHeart">
+            ❤️
+        </div>
+
+        <h1>
+
+            AYYYYYY
+
+            <br>
+
+            KANBGHEK 😭❤️
+
+        </h1>
+
+        <p>
+
+            You actually found me 😭❤️
+
+        </p>
+
+        <button
+            class="continueBtn"
+            onclick="showFinal()">
+
+            Continue ❤️
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FINAL
+===================================================== -->
+
+<div
+    class="box"
+    id="final">
+
+    <div class="big-heart">
+        ❤️
+    </div>
+
+    <h1>
+        I KNEW IT 😭❤️
+    </h1>
+
+    <p>
+
+        I knew you couldn't say no forever 😂
+
+        <br><br>
+
+        You just made my day.
+
+        <br><br>
+
+        I love you Hiba ❤️
+
+    </p>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   LOVE QUESTION
+===================================================== */
+
+let noCount = 0;
+
+
+const question =
+    document.getElementById(
+        "question"
+    );
+
+
+const yes =
+    document.getElementById(
+        "yes"
+    );
+
+
+const no =
+    document.getElementById(
+        "no"
+    );
+
+
+function noClicked() {
+
+    noCount++;
+
+
+    if (noCount === 1) {
+
+        question.innerHTML =
+            "Are you sure? 🥺";
+
+        yes.style.transform =
+            "scale(1.25)";
+    }
+
+
+    else if (noCount === 2) {
+
+        question.innerHTML =
+            "Please say yes 🥺❤️";
+
+        yes.style.transform =
+            "scale(1.6)";
+    }
+
+
+    else if (noCount === 3) {
+
+        question.innerHTML =
+            "PLEASEEEE 😭❤️";
+
+        yes.style.transform =
+            "scale(2.2)";
+
+        yes.style.boxShadow =
+            "0 0 60px rgba(255,79,157,1)";
+
+        no.innerHTML =
+            "okay fine 😭";
+    }
+
+
+    else {
+
+        question.innerHTML =
+            "YOU'RE REALLY SAYING NO?! 😭";
+
+        yes.style.transform =
+            "scale(2.6)";
+    }
+}
+
+
+/* =====================================================
+   START GAME
+===================================================== */
+
+function yesClicked() {
+
+    document.getElementById(
+        "main"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "gameScreen"
+    ).style.display = "block";
+
+
+    startGame();
+}
+
+
+/* =====================================================
+   GAME VARIABLES
+===================================================== */
+
+const player =
+    document.getElementById(
+        "player"
+    );
+
+
+const yassir =
+    document.getElementById(
+        "yassir"
+    );
+
+
+const speech =
+    document.getElementById(
+        "speech"
+    );
+
+
+const game =
+    document.getElementById(
+        "game"
+    );
+
+
+let playerX = 30;
+
+let playerY = 30;
+
+
+let yassirX = 820;
+
+let yassirY = 520;
+
+
+let speed = 4;
+
+
+let keys = {};
+
+
+let gameStarted = false;
+
+
+/* =====================================================
+   KEYBOARD
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(e) {
+
+        keys[
+            e.key.toLowerCase()
+        ] = true;
+
+    }
+);
+
+
+document.addEventListener(
+    "keyup",
+    function(e) {
+
+        keys[
+            e.key.toLowerCase()
+        ] = false;
+
+    }
+);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+function startGame() {
+
+    playerX = 30;
+
+    playerY = 30;
+
+
+    yassirX = 820;
+
+    yassirY = 520;
+
+
+    player.style.left =
+        playerX + "px";
+
+
+    player.style.top =
+        playerY + "px";
+
+
+    yassir.style.left =
+        yassirX + "px";
+
+
+    yassir.style.top =
+        yassirY + "px";
+
+
+    gameStarted = true;
+
+
+    gameLoop();
+}
+
+
+/* =====================================================
+   COLLISION
+===================================================== */
+
+function touchingObstacle(
+    x,
+    y
+) {
+
+    const obstacles =
+        document.querySelectorAll(
+            ".obstacle"
+        );
+
+
+    const playerSize = 38;
+
+
+    for (
+        let obstacle
+        of obstacles
+    ) {
+
+        const ox =
+            obstacle.offsetLeft;
+
+        const oy =
+            obstacle.offsetTop;
+
+        const ow =
+            obstacle.offsetWidth;
+
+        const oh =
+            obstacle.offsetHeight;
+
+
+        if (
+
+            x < ox + ow &&
+
+            x + playerSize > ox &&
+
+            y < oy + oh &&
+
+            y + playerSize > oy
+
+        ) {
+
+            return true;
+        }
+    }
+
+
+    return false;
+}
+
+
+/* =====================================================
+   GAME LOOP
+===================================================== */
+
+function gameLoop() {
+
+    if (!gameStarted)
+        return;
+
+
+    let newX =
+        playerX;
+
+
+    let newY =
+        playerY;
+
+
+    /* -----------------
+       PC CONTROLS
+    ----------------- */
+
+
+    if (
+        keys["w"] ||
+        keys["arrowup"]
+    ) {
+
+        newY -= speed;
+    }
+
+
+    if (
+        keys["s"] ||
+        keys["arrowdown"]
+    ) {
+
+        newY += speed;
+    }
+
+
+    if (
+        keys["a"] ||
+        keys["arrowleft"]
+    ) {
+
+        newX -= speed;
+    }
+
+
+    if (
+        keys["d"] ||
+        keys["arrowright"]
+    ) {
+
+        newX += speed;
+    }
+
+
+    /* -----------------
+       MOBILE JOYSTICK
+    ----------------- */
+
+
+    if (joystickActive) {
+
+        newX +=
+            joystickX *
+            speed;
+
+        newY +=
+            joystickY *
+            speed;
+    }
+
+
+    /* -----------------
+       MAP BOUNDARIES
+    ----------------- */
+
+
+    newX =
+        Math.max(
+            5,
+
+            Math.min(
+                game.clientWidth - 45,
+                newX
+            )
+        );
+
+
+    newY =
+        Math.max(
+            5,
+
+            Math.min(
+                game.clientHeight - 45,
+                newY
+            )
+        );
+
+
+    /* -----------------
+       COLLISION
+    ----------------- */
+
+
+    if (
+        !touchingObstacle(
+            newX,
+            playerY
+        )
+    ) {
+
+        playerX =
+            newX;
+    }
+
+
+    if (
+        !touchingObstacle(
+            playerX,
+            newY
+        )
+    ) {
+
+        playerY =
+            newY;
+    }
+
+
+    /* -----------------
+       UPDATE PLAYER
+    ----------------- */
+
+    player.style.left =
+        playerX + "px";
+
+
+    player.style.top =
+        playerY + "px";
+
+
+    /* -----------------
+       DISTANCE TO YASSIR
+    ----------------- */
+
+    const dx =
+        playerX -
+        yassirX;
+
+
+    const dy =
+        playerY -
+        yassirY;
+
+
+    const distance =
+        Math.sqrt(
+            dx * dx +
+            dy * dy
+        );
+
+
+    /* -----------------
+       YASSIR MESSAGES
+    ----------------- */
+
+
+    if (
+        distance < 250
+    ) {
+
+        speech.style.display =
+            "block";
+
+
+        speech.style.left =
+            (yassirX + 25)
+            + "px";
+
+
+        speech.style.top =
+            (yassirY - 5)
+            + "px";
+
+
+        if (
+            distance < 150
+        ) {
+
+            speech.innerHTML =
+                "You're getting close 👀❤️";
+
+        }
+
+        else {
+
+            speech.innerHTML =
+                "hmm... where are you going? 😂";
+        }
+
+    }
+
+    else {
+
+        speech.style.display =
+            "none";
+    }
+
+
+    /* -----------------
+       FOUND
+    ----------------- */
+
+
+    if (
+        distance < 45
+    ) {
+
+        foundMe();
+
+        return;
+    }
+
+
+    requestAnimationFrame(
+        gameLoop
+    );
+}
+
+
+/* =====================================================
+   FOUND YASSIR
+===================================================== */
+
+function foundMe() {
+
+    gameStarted = false;
+
+
+    document.getElementById(
+        "gameScreen"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "foundScreen"
+    ).style.display = "flex";
+
+
+    /* Heart explosion */
+
+    for (
+        let i = 0;
+        i < 50;
+        i++
+    ) {
+
+        setTimeout(
+            createHeart,
+            i * 50
+        );
+    }
+}
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+function showFinal() {
+
+    document.getElementById(
+        "foundScreen"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "final"
+    ).style.display = "block";
+
+
+    for (
+        let i = 0;
+        i < 30;
+        i++
+    ) {
+
+        setTimeout(
+            createHeart,
+            i * 100
+        );
+    }
+}
+
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+function createHeart() {
+
+    const heart =
+        document.createElement(
+            "div"
+        );
+
+
+    heart.className =
+        "heart";
+
+
+    heart.innerHTML =
+        [
+            "❤️",
+            "💕",
+            "💗",
+            "💖",
+            "💘"
+        ][
+            Math.floor(
+                Math.random() * 5
+            )
+        ];
+
+
+    heart.style.left =
+        Math.random() * 100
+        + "vw";
+
+
+    heart.style.fontSize =
+        (
+            15 +
+            Math.random() * 30
+        )
+        + "px";
+
+
+    heart.style.animationDuration =
+        (
+            4 +
+            Math.random() * 4
+        )
+        + "s";
+
+
+    document.body.appendChild(
+        heart
+    );
+
+
+    setTimeout(
+        () => heart.remove(),
+        8000
+    );
+}
+
+
+/* Background hearts */
+
+setInterval(
+    createHeart,
+    700
+);
+
+
+/* =====================================================
+   MOBILE JOYSTICK
+===================================================== */
+
+const joystick =
+    document.getElementById(
+        "joystick"
+    );
+
+
+const joystickKnob =
+    document.getElementById(
+        "joystickKnob"
+    );
+
+
+let joystickActive =
+    false;
+
+
+let joystickX = 0;
+
+let joystickY = 0;
+
+
+const joystickRadius = 62;
+
+
+/* =====================================================
+   MOVE JOYSTICK
+===================================================== */
+
+function moveJoystick(
+    clientX,
+    clientY
+) {
+
+    const rect =
+        joystick.getBoundingClientRect();
+
+
+    const centerX =
+        rect.left +
+        rect.width / 2;
+
+
+    const centerY =
+        rect.top +
+        rect.height / 2;
+
+
+    let dx =
+        clientX -
+        centerX;
+
+
+    let dy =
+        clientY -
+        centerY;
+
+
+    const distance =
+        Math.sqrt(
+            dx * dx +
+            dy * dy
+        );
+
+
+    if (
+        distance >
+        joystickRadius
+    ) {
+
+        dx =
+            dx /
+            distance *
+            joystickRadius;
+
+
+        dy =
+            dy /
+            distance *
+            joystickRadius;
+    }
+
+
+    joystickX =
+        dx /
+        joystickRadius;
+
+
+    joystickY =
+        dy /
+        joystickRadius;
+
+
+    joystickKnob.style.left =
+        `calc(
+            50% +
+            ${dx}px
+        )`;
+
+
+    joystickKnob.style.top =
+        `calc(
+            50% +
+            ${dy}px
+        )`;
+}
+
+
+/* =====================================================
+   RESET JOYSTICK
+===================================================== */
+
+function resetJoystick() {
+
+    joystickActive =
+        false;
+
+
+    joystickX = 0;
+
+    joystickY = 0;
+
+
+    joystickKnob.style.left =
+        "50%";
+
+
+    joystickKnob.style.top =
+        "50%";
+}
+
+
+/* =====================================================
+   TOUCH START
+===================================================== */
+
+joystick.addEventListener(
+    "touchstart",
+
+    function(e) {
+
+        e.preventDefault();
+
+
+        joystickActive =
+            true;
+
+
+        const touch =
+            e.touches[0];
+
+
+        moveJoystick(
+            touch.clientX,
+            touch.clientY
+        );
+
+    },
+
+    {
+        passive: false
+    }
+);
+
+
+/* =====================================================
+   TOUCH MOVE
+===================================================== */
+
+joystick.addEventListener(
+    "touchmove",
+
+    function(e) {
+
+        e.preventDefault();
+
+
+        if (
+            !joystickActive
+        )
+            return;
+
+
+        const touch =
+            e.touches[0];
+
+
+        moveJoystick(
+            touch.clientX,
+            touch.clientY
+        );
+
+    },
+
+    {
+        passive: false
+    }
+);
+
+
+/* =====================================================
+   TOUCH END
+===================================================== */
+
+joystick.addEventListener(
+    "touchend",
+
+    function(e) {
+
+        e.preventDefault();
+
+
+        resetJoystick();
+
+    },
+
+    {
+        passive: false
+    }
+);
+
+</script>
+
+</body>
+</html>
